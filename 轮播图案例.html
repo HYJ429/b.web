@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .slider{
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+            background-color: skyblue;
+            box-shadow:0 4px;
+        }
+        .slider-hd img{
+            width: 300px;
+            height: 200px;
+        }
+        .active{
+            color: greenyellow;
+        }
+        .slider-a li{
+	        float: left;
+            width: 10px ;
+        }
+
+
+    
+
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slider-hd">
+            <img src="图/001.jpg">
+        </div>
+        <div class="slider-bd">
+            <p>BIg things are coming（大事发生）</p>
+            <ul class="slider-a">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+</div>
+<script>
+    const hYj = [
+                    {url:'图/001.jpg',title:'BIg things are coming（大事发生）',color:'blue'},
+                    {url:'图/002.jpg',title:'篮球之子的对位时刻',color:'yellow'},
+                    {url:'图/003.jpg',title:'科比的封神之战',color:'gree'},
+                    {url:'图/004.jpg',title:'巅峰对决',color:'hotpink'},
+                    {url:'图/005.jpg',title:'FMVP非你莫属，曼巴！',color:'red'}
+    ]
+    const img = document.querySelector('.slider-hd img')
+    const p = document.querySelector('.slider-bd p')
+    let i = 0
+    let ding = setInterval(function(){
+            i++
+            if(i>=hYj.length){
+                i=0
+            }
+            img.src=hYj[i].url
+            p.innerHTML=hYj[i].title
+            document.querySelector('.slider-a .active').classList.remove('active')
+            document.querySelector(`.slider-a li:nth-child(${i+1})`).classList.add('active')
+
+
+    },1000)
+
+    
+    
+    </script>
+</body>
+</html>
